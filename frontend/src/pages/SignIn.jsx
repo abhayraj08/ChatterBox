@@ -2,18 +2,16 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import FlashMessage from "../components/FlashMessage";
+import eyeOpen from "../assets/eye-open.svg";
+import eyeClosed from "../assets/eye-closed.svg";
+import './style.css';
 
 export default function SignIn() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const [flash, setFlash] = useState(null);
 
-  // inside component
-  // useEffect(() => {
-  //   // Clear localStorage when visiting signin page
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("username");
-  // }, []);
 
 
   const handleSignin = async (e) => {
@@ -36,29 +34,55 @@ export default function SignIn() {
 
   return (
     <div>
-      {flash && <FlashMessage message={flash} onClose={() => setFlash(null)} />}
-      <h2>Sign In</h2>
-      <form onSubmit={handleSignin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={form.username}
-          onChange={(e) => setForm({ ...form, username: e.target.value })}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          required
-        />
-        <button type="submit">Sign In</button>
-      </form>
+      <div className="container">
+        <div className="card">
+          {flash && <FlashMessage message={flash} onClose={() => setFlash(null)} />}
+          <h2 className="title">Sign In</h2>
+          <p className="title-subtext">Hello world</p>
 
-      <div className="login-link">
-        Don't have an account?
-        <a href="/signup"> Sign Up</a>
+          <form onSubmit={handleSignin} className="form">
+            <div className="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                type="text"
+                placeholder="Give your username"
+                value={form.username}
+                onChange={(e) => setForm({ ...form, username: e.target.value })}
+                required
+                className="input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <div className="password-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Give your password"
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  required
+                  className="input"
+                />
+                <img
+                  src={showPassword ? eyeClosed : eyeOpen}
+                  alt="Toggle Password"
+                  className="toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="submit-btn">Sign In</button>
+          </form>
+
+          <div className="login-link">
+            Don't have an account?
+            <a href="/signup"> Sign Up</a>
+          </div>
+        </div>
       </div>
     </div>
   );
