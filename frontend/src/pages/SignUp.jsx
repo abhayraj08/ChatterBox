@@ -107,6 +107,8 @@ export default function SignUp() {
                 </li>
               </ul>
             )}
+
+            {/* {form.password.length == 0 && ()} */}
           </div>
 
           <div className="form-group">
@@ -144,7 +146,7 @@ export default function SignUp() {
 
         <div className="login-link">
           Already have an account?
-          <a href="/signin"> Sign In</a>
+          <a href="/signin">Sign in</a>
         </div>
       </div>
     </div>

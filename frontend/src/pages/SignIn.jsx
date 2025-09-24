@@ -80,7 +80,7 @@ export default function SignIn() {
 
           <div className="login-link">
             Don't have an account?
-            <a href="/signup"> Sign Up</a>
+            <a href="/signup">Sign up</a>
           </div>
         </div>
       </div>
