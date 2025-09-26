@@ -34,7 +34,7 @@ export default function SignUp() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/signup", {
+      const res = await axios.post("https://chatterbox-fnyh.onrender.com/api/auth/signup", {
         username: form.username.trim(),
         password: form.password  // don't send confirmPassword to backend
       });
