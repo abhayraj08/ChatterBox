@@ -5,10 +5,6 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 const app = express();
-const path = require('path');
-
-// Serve frontend build
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 // Middleware
 app.use(express.json());
@@ -25,8 +21,8 @@ const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
 // catch-all route
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
 });
 
 // Starting server
