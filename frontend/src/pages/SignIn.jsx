@@ -38,7 +38,7 @@ export default function SignIn() {
         <div className="card">
           {flash && <FlashMessage message={flash} onClose={() => setFlash(null)} />}
           <h2 className="title">Sign In</h2>
-          <p className="title-subtext">Hello world</p>
+          <p className="title-subtext">Enter your credentials to access your account</p>
 
           <form onSubmit={handleSignin} className="form">
             <div className="form-group">
